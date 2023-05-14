@@ -1,0 +1,902 @@
+#ISD afv6
+# Simplicity Studio version: 8.16.0.202304141247-1909
+
+stackId: com.silabs.sdk.stack.super
+stackRoot: /opt/SimplicityStudio_v5/developer/sdks/gecko_sdk_suite/v3.2
+FrameworkDirectory:protocol/zigbee/app/framework
+
+appId: znet
+frameworkVariant: em35x
+GenerationDirectory:PATH(ABSOLUTE):/home/andy/SimplicityStudio/v5_workspace/mg1_repeater
+
+DeviceName:mg1_repeater
+
+Host:unknown
+
+Platform:efr32~family[M]~series[1]~device_configuration[1]~performance[P]~radio[132]~flash[256K]~temp[I]~package[M]~pins[32]~!module+gcc
+
+ExactArchitectureToolchain:com.silabs.ss.tool.ide.arm.toolchain.gnu.cdt:10.2.1.20201103
+
+
+# Setup configurations
+{setupId:additionalFiles
+}
+{setupId:bleGattConfigurator
+<?xml version="1.0" encoding="UTF-8"?><gatt gatt_caching="false" generic_attribute_service="false" header="gatt_db.h" name="Custom BLE GATT" out="gatt_db.c" prefix="gattdb_"/>
+}
+{setupId:boardHeader
+allowMissingHeader:false
+useHeaderInPlace:false
+efr32~family[M]~series[1]~device_configuration[1]~performance[P]~radio[132]~flash[256K]~temp[I]~package[M]~pins[32]~!module+gcc=USE_HARDWARE_CONFIGURATOR,,,
+}
+{setupId:bookkeeping
+}
+{setupId:bootloader
+}
+{setupId:callbackConfiguration
+}
+{setupId:commandLineConfiguration
+on
+}
+{setupId:debugConfiguration
+on
+area name off
+appSerial=1
+remove,ATTRIBUTES
+compile,DEBUG
+compile,EMBER_AF_PLUGIN_OTA_CLIENT
+compile,EMBER_AF_PLUGIN_OTA_COMMON
+compile,EMBER_AF_PLUGIN_OTA_STORAGE_COMMON
+compile,EMBER_AF_PLUGIN_OTA_STORAGE_SIMPLE
+compile,EMBER_AF_PLUGIN_OTA_STORAGE_SIMPLE_EEPROM
+compile,EMBER_AF_PLUGIN_SIM_EEPROM2
+compile,OTA_BOOTLOAD_CLUSTER
+enable,DEBUG
+enable,EMBER_AF_PLUGIN_OTA_CLIENT
+enable,EMBER_AF_PLUGIN_OTA_COMMON
+enable,EMBER_AF_PLUGIN_OTA_STORAGE_COMMON
+enable,EMBER_AF_PLUGIN_OTA_STORAGE_SIMPLE
+enable,EMBER_AF_PLUGIN_OTA_STORAGE_SIMPLE_EEPROM
+enable,EMBER_AF_PLUGIN_SIM_EEPROM2
+enable,OTA_BOOTLOAD_CLUSTER
+}
+{setupId:eventConfiguration
+ledEffectEventData,ledEffectEventHandler
+}
+{setupId:halOptions
+}
+{setupId:hwConfig
+lastArchitectureId=efr32~family[M]~series[1]~device_configuration[1]~performance[P]~radio[132]~flash[256K]~temp[I]~package[M]~pins[32]~!module+gcc
+featureLevel=1
+active=true
+lastHwConfFileUsed=PATH(GEN_RELATIVE):custom_efr32mg1p132f256im32.hwconf
+}
+{setupId:information
+\{key:description
+ZigBee Minimal Application
+
+The ZigbeeMinimal application provides a minimal functional subset to perform
+ZigBee 3.0 network joining and serve as a starting point for users wishing to
+build their own ZigBee applications. The application is configured to operate
+as a ZigBee Router, but can easily be modified to operate as a Coordinator
+or End Device.
+
+The ZigbeeMinimal application provides a simple interface to the user
+via the command line interface (CLI). When the node is not on a network,
+it can initiate network steering to join a network with the CLI command
+"plugin network-steering start 1".
+
+As configured, only network-layer functionality is provided; no ZigBee
+Cluster Library (ZCL) application-layer functionality is implemented. The
+application's ZCL ProfileId and DeviceId are set to undefined value 0xFFFF,
+and no ZCL clusters are enabled. Refer to the other sample applications for
+examples of how this layer of functionality is configured and enabled.
+
+The current debug printing settings in this application are to aid the user
+to understand and debug this sample scenario. Debug printing should be turned
+off in order to save code size on a final product.
+
+The application maintains persistent storage using the NVM3 plugin.
+\}
+}
+{setupId:macros
+TRANSITION_TIME_DS=20
+FINDING_AND_BINDING_DELAY_MS=3000
+}
+{setupId:mpsi
+- mappings
+- custom messages
+}
+{setupId:pluginService
+}
+{setupId:quizz
+}
+{setupId:serial
+useHwConfigurator=true
+}
+{setupId:template
+--version:2
+--backupValues:
+headerSize=256
+}
+{setupId:token
+}
+{setupId:zclAfv2
+intMap:ManufacturingCode = 4098
+intMap:ReportTableSize = 5
+intMap:Endpoint = 10
+intMap:DeviceVersion = 1
+intMap:DefaultDestinationEndpoint = 10
+intMap:ProfileId = -1
+intMap:DeviceId = -1
+intMap:SourceRouteTableSize = 7
+intMap:DefaultResponsePolicy = 0
+boolMap:EnableStandardReporting = false
+boolMap:EnableInterPanSend = false
+boolMap:EnableInterPanReceive = false
+boolMap:SupportCommandDiscovery = true
+boolMap:EnableKeySwitch = false
+boolMap:LowRamConcentrator = true
+boolMap:EnableAttributeRangeChecking = false
+boolMap:ReceiveSupportedZdoRequests = false
+boolMap:HandleUnsupportedZdoRequests = false
+boolMap:HandleEndpointZdoRequests = false
+boolMap:HandleBindingZdoRequests = false
+boolMap:LegacyCli = false
+boolMap:AddCustomCli = false
+boolMap:IncludeCommandDescriptions = false
+boolMap:GenerateCallbacksFile = false
+boolMap:ManufacturerCodeDefaultIsZero = true
+beginAttrList:OPTIONAL
+  cl:0x0000, at:0x4000, di:server, mf:0x0000
+  cl:0x0000, at:0x000A, di:server, mf:0x0000
+  cl:0x0000, at:0x0005, di:server, mf:0x0000
+  cl:0x0000, at:0x0002, di:server, mf:0x0000
+  cl:0x0000, at:0x0001, di:server, mf:0x0000
+  cl:0x0000, at:0x0004, di:server, mf:0x0000
+endAttrList:OPTIONAL
+beginAttributeDefaults
+cl:0x0000, at:0x4000, di:server, mf:0x0000 => 1.0.0
+cl:0x0000, at:0x000A, di:server, mf:0x0000 => E1746
+cl:0x0000, at:0x0005, di:server, mf:0x0000 => Repeater
+cl:0x0000, at:0x0002, di:server, mf:0x0000 => 0x6A
+cl:0x0000, at:0x0001, di:server, mf:0x0000 => 0x01
+cl:0x0000, at:0x0004, di:server, mf:0x0000 => IKEA
+endAttributeDefaults
+configuredNetwork:*type:ZIGBEE_PRO, name:Primary
+beginEndpointType:Primary
+device:zcustom
+deviceId:-1
+profileId:-1
+overrideClientCluster:0x0000,no
+overrideClientCluster:0x0001,no
+overrideClientCluster:0x0002,no
+overrideClientCluster:0x0003,yes
+overrideClientCluster:0x0004,yes
+overrideClientCluster:0x0005,no
+overrideClientCluster:0x0006,yes
+overrideClientCluster:0x0007,no
+overrideClientCluster:0x0008,no
+overrideClientCluster:0x0009,no
+overrideClientCluster:0x000A,no
+overrideClientCluster:0x000B,no
+overrideClientCluster:0x000F,no
+overrideClientCluster:0x0015,no
+overrideClientCluster:0x0016,no
+overrideClientCluster:0x0019,yes
+overrideClientCluster:0x001A,no
+overrideClientCluster:0x001B,no
+overrideClientCluster:0x0020,no
+overrideClientCluster:0x0021,no
+overrideClientCluster:0x0025,no
+overrideClientCluster:0x0100,no
+overrideClientCluster:0x0101,no
+overrideClientCluster:0x0102,no
+overrideClientCluster:0x0103,no
+overrideClientCluster:0x0200,no
+overrideClientCluster:0x0201,no
+overrideClientCluster:0x0202,no
+overrideClientCluster:0x0203,no
+overrideClientCluster:0x0204,no
+overrideClientCluster:0x0300,no
+overrideClientCluster:0x0301,no
+overrideClientCluster:0x0400,no
+overrideClientCluster:0x0401,no
+overrideClientCluster:0x0402,no
+overrideClientCluster:0x0403,no
+overrideClientCluster:0x0404,no
+overrideClientCluster:0x0405,no
+overrideClientCluster:0x0406,no
+overrideClientCluster:0x040C,no
+overrideClientCluster:0x040D,no
+overrideClientCluster:0x040E,no
+overrideClientCluster:0x040F,no
+overrideClientCluster:0x0410,no
+overrideClientCluster:0x0411,no
+overrideClientCluster:0x0412,no
+overrideClientCluster:0x0413,no
+overrideClientCluster:0x0414,no
+overrideClientCluster:0x0415,no
+overrideClientCluster:0x0416,no
+overrideClientCluster:0x0417,no
+overrideClientCluster:0x0418,no
+overrideClientCluster:0x0419,no
+overrideClientCluster:0x041A,no
+overrideClientCluster:0x041B,no
+overrideClientCluster:0x041C,no
+overrideClientCluster:0x041D,no
+overrideClientCluster:0x041E,no
+overrideClientCluster:0x041F,no
+overrideClientCluster:0x0420,no
+overrideClientCluster:0x0421,no
+overrideClientCluster:0x0422,no
+overrideClientCluster:0x0423,no
+overrideClientCluster:0x0424,no
+overrideClientCluster:0x0425,no
+overrideClientCluster:0x0426,no
+overrideClientCluster:0x0427,no
+overrideClientCluster:0x0428,no
+overrideClientCluster:0x0429,no
+overrideClientCluster:0x0500,no
+overrideClientCluster:0x0501,no
+overrideClientCluster:0x0502,no
+overrideClientCluster:0x0600,no
+overrideClientCluster:0x0601,no
+overrideClientCluster:0x0614,no
+overrideClientCluster:0x0615,no
+overrideClientCluster:0x0700,no
+overrideClientCluster:0x0701,no
+overrideClientCluster:0x0702,no
+overrideClientCluster:0x0703,no
+overrideClientCluster:0x0704,no
+overrideClientCluster:0x0705,no
+overrideClientCluster:0x0706,no
+overrideClientCluster:0x0707,no
+overrideClientCluster:0x0708,no
+overrideClientCluster:0x0709,no
+overrideClientCluster:0x070A,no
+overrideClientCluster:0x070B,no
+overrideClientCluster:0x0800,no
+overrideClientCluster:0x0900,no
+overrideClientCluster:0x0901,no
+overrideClientCluster:0x0902,no
+overrideClientCluster:0x0903,no
+overrideClientCluster:0x0904,no
+overrideClientCluster:0x0905,no
+overrideClientCluster:0x0A01,no
+overrideClientCluster:0x0A02,no
+overrideClientCluster:0x0B00,no
+overrideClientCluster:0x0B01,no
+overrideClientCluster:0x0B02,no
+overrideClientCluster:0x0B03,no
+overrideClientCluster:0x0B04,no
+overrideClientCluster:0x0B05,no
+overrideClientCluster:0x1000,no
+overrideMfgClientCluster:0xFC00,0x1002,no
+overrideMfgClientCluster:0xFC00,0x1049,no
+overrideMfgClientCluster:0xFC01,0x1002,no
+overrideMfgClientCluster:0xFC02,0x1002,no
+overrideMfgClientCluster:0xFC57,0x1217,no
+overrideServerCluster:0x0000,yes
+overrideServerCluster:0x0001,no
+overrideServerCluster:0x0002,no
+overrideServerCluster:0x0003,yes
+overrideServerCluster:0x0004,yes
+overrideServerCluster:0x0005,no
+overrideServerCluster:0x0006,no
+overrideServerCluster:0x0007,no
+overrideServerCluster:0x0008,no
+overrideServerCluster:0x0009,no
+overrideServerCluster:0x000A,no
+overrideServerCluster:0x000B,no
+overrideServerCluster:0x000F,no
+overrideServerCluster:0x0015,no
+overrideServerCluster:0x0016,no
+overrideServerCluster:0x0019,no
+overrideServerCluster:0x001A,no
+overrideServerCluster:0x001B,no
+overrideServerCluster:0x0020,no
+overrideServerCluster:0x0021,no
+overrideServerCluster:0x0025,no
+overrideServerCluster:0x0100,no
+overrideServerCluster:0x0101,no
+overrideServerCluster:0x0102,no
+overrideServerCluster:0x0103,no
+overrideServerCluster:0x0200,no
+overrideServerCluster:0x0201,no
+overrideServerCluster:0x0202,no
+overrideServerCluster:0x0203,no
+overrideServerCluster:0x0204,no
+overrideServerCluster:0x0300,no
+overrideServerCluster:0x0301,no
+overrideServerCluster:0x0400,no
+overrideServerCluster:0x0401,no
+overrideServerCluster:0x0402,no
+overrideServerCluster:0x0403,no
+overrideServerCluster:0x0404,no
+overrideServerCluster:0x0405,no
+overrideServerCluster:0x0406,no
+overrideServerCluster:0x040C,no
+overrideServerCluster:0x040D,no
+overrideServerCluster:0x040E,no
+overrideServerCluster:0x040F,no
+overrideServerCluster:0x0410,no
+overrideServerCluster:0x0411,no
+overrideServerCluster:0x0412,no
+overrideServerCluster:0x0413,no
+overrideServerCluster:0x0414,no
+overrideServerCluster:0x0415,no
+overrideServerCluster:0x0416,no
+overrideServerCluster:0x0417,no
+overrideServerCluster:0x0418,no
+overrideServerCluster:0x0419,no
+overrideServerCluster:0x041A,no
+overrideServerCluster:0x041B,no
+overrideServerCluster:0x041C,no
+overrideServerCluster:0x041D,no
+overrideServerCluster:0x041E,no
+overrideServerCluster:0x041F,no
+overrideServerCluster:0x0420,no
+overrideServerCluster:0x0421,no
+overrideServerCluster:0x0422,no
+overrideServerCluster:0x0423,no
+overrideServerCluster:0x0424,no
+overrideServerCluster:0x0425,no
+overrideServerCluster:0x0426,no
+overrideServerCluster:0x0427,no
+overrideServerCluster:0x0428,no
+overrideServerCluster:0x0429,no
+overrideServerCluster:0x0500,no
+overrideServerCluster:0x0501,no
+overrideServerCluster:0x0502,no
+overrideServerCluster:0x0600,no
+overrideServerCluster:0x0601,no
+overrideServerCluster:0x0614,no
+overrideServerCluster:0x0615,no
+overrideServerCluster:0x0700,no
+overrideServerCluster:0x0701,no
+overrideServerCluster:0x0702,no
+overrideServerCluster:0x0703,no
+overrideServerCluster:0x0704,no
+overrideServerCluster:0x0705,no
+overrideServerCluster:0x0706,no
+overrideServerCluster:0x0707,no
+overrideServerCluster:0x0708,no
+overrideServerCluster:0x0709,no
+overrideServerCluster:0x070A,no
+overrideServerCluster:0x070B,no
+overrideServerCluster:0x0800,no
+overrideServerCluster:0x0900,no
+overrideServerCluster:0x0901,no
+overrideServerCluster:0x0902,no
+overrideServerCluster:0x0903,no
+overrideServerCluster:0x0904,no
+overrideServerCluster:0x0905,no
+overrideServerCluster:0x0A01,no
+overrideServerCluster:0x0A02,no
+overrideServerCluster:0x0B00,no
+overrideServerCluster:0x0B01,no
+overrideServerCluster:0x0B02,no
+overrideServerCluster:0x0B03,no
+overrideServerCluster:0x0B04,no
+overrideServerCluster:0x0B05,no
+overrideServerCluster:0x1000,no
+overrideMfgServerCluster:0xFC00,0x1002,no
+overrideMfgServerCluster:0xFC00,0x1049,no
+overrideMfgServerCluster:0xFC01,0x1002,no
+overrideMfgServerCluster:0xFC02,0x1002,no
+overrideMfgServerCluster:0xFC57,0x1217,no
+endEndpointType
+configuredEndpoint:*ep:1,pi: 260,di:8,dv:1,ept:Primary,nwk:Primary
+callbacks:emberAfStackStatusCallback
+callbacks:emberAfPluginNetworkSteeringCompleteCallback
+callbacks:emberAfMainTickCallback
+callbacks:emberAfMainInitCallback
+callbacks:emberAfHalButtonIsrCallback
+callbacks:emberAfPluginFindAndBindInitiatorCompleteCallback
+callbacks:emberAfPluginFindAndBindInitiatorBindTargetCallback
+}
+{setupId:zclCustomizer
+}
+{setupId:zigbeeStack
+boolMap:EnableZdoSerialCommands = false
+boolMap:EnableBindings = true
+boolMap:EnableEndDeviceBind = false
+boolMap:EnableReceiveStatistics = false
+boolMap:UseEcc163k1 = false
+boolMap:UseEcc283k1 = false
+boolMap:PreconfiguredKeyEnabled = false
+boolMap:NetworkKeyEnabled = false
+boolMap:FragmentationEnable = false
+boolMap:EnableConcentrator = true
+boolMap:UseSeInstallCodes = false
+boolMap:TxPowerModeUseToken = true
+boolMap:BoostMode = false
+boolMap:AlternatePowerMode = false
+byteArrayMap:PreconfiguredKey = 56 77 77 77 77 77 77 77 77 77 77 77 77 77 77 77
+byteArrayMap:NetworkKey = 12 33 33 33 33 33 33 33 33 33 33 33 33 33 33 33
+byteArrayMap:NetworkKey2 = AB CC CC CC CC CC CC CC CC CC CC CC CC CC CC CC
+intMap:NumberOfBindings = 2
+intMap:AddressTableSize = 2
+intMap:TrustCenterCacheSize = 2
+intMap:LinkKeyMode = 2
+intMap:FragmentationMaxSize = 255
+intMap:HeartbeatLed = 1
+configuredNetworkSecurity:Primary|ZIGBEE_PRO=Z3
+configuredNetworkZigbeeDeviceType:Primary|ZIGBEE_PRO=ZA_ROUTER
+CliCommandSet:Full
+CliCommands:remove,bsend
+CliCommands:remove,changekey link
+CliCommands:remove,changekey network
+CliCommands:remove,debugprint all_off
+CliCommands:remove,debugprint all_on
+CliCommands:remove,debugprint off
+CliCommands:remove,debugprint on
+CliCommands:remove,debugprint status
+CliCommands:remove,echo
+CliCommands:remove,endpoint disable
+CliCommands:remove,endpoint enable
+CliCommands:remove,endpoint print
+CliCommands:remove,events
+CliCommands:remove,help
+CliCommands:remove,info
+CliCommands:remove,interpan group
+CliCommands:remove,interpan long
+CliCommands:remove,interpan short
+CliCommands:remove,keys clear
+CliCommands:remove,keys delete
+CliCommands:remove,keys print
+CliCommands:remove,libs
+CliCommands:remove,network broad-pjoin
+CliCommands:remove,network change-channel
+CliCommands:remove,network change-keep-alive-mode
+CliCommands:remove,network extpanid
+CliCommands:remove,network find joinable
+CliCommands:remove,network find unused
+CliCommands:remove,network form
+CliCommands:remove,network id
+CliCommands:remove,network init
+CliCommands:remove,network isopen
+CliCommands:remove,network join
+CliCommands:remove,network leave
+CliCommands:remove,network multi-phy-start
+CliCommands:remove,network multi-phy-stop
+CliCommands:remove,network pjoin
+CliCommands:remove,network rejoin
+CliCommands:remove,network rejoin-diff-device-type
+CliCommands:remove,network set
+CliCommands:remove,network timeout-option-mask
+CliCommands:remove,option apsretry default
+CliCommands:remove,option apsretry off
+CliCommands:remove,option apsretry on
+CliCommands:remove,option binding-table clear
+CliCommands:remove,option binding-table print
+CliCommands:remove,option binding-table set
+CliCommands:remove,option disc
+CliCommands:remove,option edb
+CliCommands:remove,option install-code
+CliCommands:remove,option link
+CliCommands:remove,option print-rx-msgs disable
+CliCommands:remove,option print-rx-msgs enable
+CliCommands:remove,option register
+CliCommands:remove,option security aps off
+CliCommands:remove,option security aps on
+CliCommands:remove,option security set-allow-trust-center-rejoin-using-well-known-key
+CliCommands:remove,option security set-allow-trust-center-rejoin-using-well-known-key-timeout
+CliCommands:remove,option security set-key-request-policy
+CliCommands:remove,plugin counter print-counter-type
+CliCommands:remove,plugin counters clear
+CliCommands:remove,plugin counters print
+CliCommands:remove,plugin counters print-thresholds
+CliCommands:remove,plugin counters reset-threshold
+CliCommands:remove,plugin counters send-request
+CliCommands:remove,plugin counters set-threshold
+CliCommands:remove,plugin counters simple-print
+CliCommands:remove,plugin eeprom data-print
+CliCommands:remove,plugin eeprom info
+CliCommands:remove,plugin eeprom status
+CliCommands:remove,plugin find-and-bind initiator
+CliCommands:remove,plugin network-creator form
+CliCommands:remove,plugin network-creator mask add
+CliCommands:remove,plugin network-creator mask set
+CliCommands:remove,plugin network-creator mask subtract
+CliCommands:remove,plugin network-creator start
+CliCommands:remove,plugin network-creator status
+CliCommands:remove,plugin network-creator stop
+CliCommands:remove,plugin network-creator-security clear-joining-link-keys
+CliCommands:remove,plugin network-creator-security close-network
+CliCommands:remove,plugin network-creator-security open-network
+CliCommands:remove,plugin network-creator-security open-with-key
+CliCommands:remove,plugin network-creator-security set-distributed-key
+CliCommands:remove,plugin network-creator-security set-joining-link-key
+CliCommands:remove,plugin network-steering mask add
+CliCommands:remove,plugin network-steering mask set
+CliCommands:remove,plugin network-steering mask subtract
+CliCommands:remove,plugin network-steering pre-configured-key-set
+CliCommands:remove,plugin network-steering start
+CliCommands:remove,plugin network-steering status
+CliCommands:remove,plugin network-steering stop
+CliCommands:remove,plugin update-tc-link-key timer
+CliCommands:remove,print attr
+CliCommands:remove,print entropy source
+CliCommands:remove,print time
+CliCommands:remove,raw
+CliCommands:remove,read
+CliCommands:remove,reset
+CliCommands:remove,security mfg-token get
+CliCommands:remove,security mfg-token set
+CliCommands:remove,send
+CliCommands:remove,send-using-multicast-binding
+CliCommands:remove,send_multicast
+CliCommands:remove,timesync
+CliCommands:remove,version
+CliCommands:remove,write
+CliCommands:remove,zcl basic glsr
+CliCommands:remove,zcl global direction
+CliCommands:remove,zcl global disc-com-gen
+CliCommands:remove,zcl global disc-com-rec
+CliCommands:remove,zcl global discover
+CliCommands:remove,zcl global expect-report-from-me
+CliCommands:remove,zcl global nwrite
+CliCommands:remove,zcl global read
+CliCommands:remove,zcl global report
+CliCommands:remove,zcl global report-read
+CliCommands:remove,zcl global send-me-a-report
+CliCommands:remove,zcl global uwrite
+CliCommands:remove,zcl global write
+CliCommands:remove,zcl groups add
+CliCommands:remove,zcl groups add-if-id
+CliCommands:remove,zcl groups get
+CliCommands:remove,zcl groups remove
+CliCommands:remove,zcl groups rmall
+CliCommands:remove,zcl groups view
+CliCommands:remove,zcl identify ez-mode
+CliCommands:remove,zcl identify id
+CliCommands:remove,zcl identify off
+CliCommands:remove,zcl identify on
+CliCommands:remove,zcl identify query
+CliCommands:remove,zcl identify trigger
+CliCommands:remove,zcl mfg-code
+CliCommands:remove,zcl on-off off
+CliCommands:remove,zcl on-off offeffect
+CliCommands:remove,zcl on-off on
+CliCommands:remove,zcl on-off onrecall
+CliCommands:remove,zcl on-off ontimedoff
+CliCommands:remove,zcl on-off toggle
+CliCommands:remove,zcl test response off
+CliCommands:remove,zcl test response on
+CliCommands:remove,zcl time
+CliCommands:remove,zcl use-next-sequence
+CliCommands:remove,zcl x-default-resp
+CliCommands:remove,zdo active
+CliCommands:remove,zdo bind
+CliCommands:remove,zdo ieee
+CliCommands:remove,zdo in-cl-list add
+CliCommands:remove,zdo in-cl-list clear
+CliCommands:remove,zdo leave
+CliCommands:remove,zdo match
+CliCommands:remove,zdo mgmt-bind
+CliCommands:remove,zdo mgmt-lqi
+CliCommands:remove,zdo node
+CliCommands:remove,zdo nwk
+CliCommands:remove,zdo nwk-upd chan
+CliCommands:remove,zdo nwk-upd chanPg
+CliCommands:remove,zdo nwk-upd scan
+CliCommands:remove,zdo nwk-upd scan-chan-mask
+CliCommands:remove,zdo nwk-upd set
+CliCommands:remove,zdo out-cl-list add
+CliCommands:remove,zdo out-cl-list clear
+CliCommands:remove,zdo power
+CliCommands:remove,zdo route
+CliCommands:remove,zdo simple
+CliCommands:remove,zdo unbind group
+CliCommands:remove,zdo unbind unicast
+}
+appPlugin:adc,false
+appPlugin:address-table,false
+appPlugin:aes-cmac,false
+appPlugin:antenna,false
+appPlugin:antenna-cli,false
+appPlugin:antenna-stub,true
+
+appPlugin:barrier-control-server,false
+appPlugin:basic,false
+appPlugin:battery-monitor,false
+appPlugin:battery-monitor-stub,false
+appPlugin:binding-table-library,true
+
+appPlugin:ble,false
+appPlugin:bulb-pwm-cli,false
+appPlugin:bulb-pwm-driver,false
+appPlugin:bulb-ui,false
+appPlugin:button-interface,false
+appPlugin:button-interface-stub,false
+appPlugin:button-joining,false
+appPlugin:calendar-client,false
+appPlugin:calendar-common,false
+appPlugin:calendar-server,false
+appPlugin:cbke-163k1-library,false
+appPlugin:cbke-283k1-library,false
+appPlugin:cbke-library-core,false
+appPlugin:cbke-library-dsa-sign,false
+appPlugin:cbke-library-dsa-verify,false
+appPlugin:cbke-library-dsa-verify-283k1,false
+appPlugin:ccm-encryption,true
+
+appPlugin:cjson,false
+appPlugin:cli-password-protection,false
+appPlugin:coexistence,false
+appPlugin:coexistence-cli,false
+appPlugin:coexistence-stub,true
+
+appPlugin:color-control,false
+appPlugin:color-control-server,false
+appPlugin:command-relay,false
+appPlugin:comms-hub-function,false
+appPlugin:comms-hub-function-sub-ghz,false
+appPlugin:concentrator,false
+appPlugin:configuration-server,false
+appPlugin:connection-manager,false
+appPlugin:counters,true
+
+appPlugin:debug-basic-library,true
+
+appPlugin:debug-extended-library,false
+appPlugin:debug-jtag,true
+
+appPlugin:debug-jtag-stub,false
+appPlugin:delayed-join,false
+appPlugin:device-database,false
+appPlugin:device-management-client,false
+appPlugin:device-management-server,false
+appPlugin:device-query-service,false
+appPlugin:device-table,false
+appPlugin:diagnostic-server,false
+appPlugin:dmp-demo-ui,false
+appPlugin:dmp-tuning,false
+appPlugin:dmp-ui-demo,false
+appPlugin:dmp-ui-demo-stub,false
+appPlugin:door-lock-server,false
+appPlugin:dotdot-mfg-certs,false
+appPlugin:drlc,false
+appPlugin:drlc-server,false
+appPlugin:ecc-library-163k1,false
+appPlugin:ecc-library-283k1,false
+appPlugin:eeprom,true
+
+appPlugin:eeprom-powerdown,false
+appPlugin:electrical-measurement-server,false
+appPlugin:em4,false
+appPlugin:ember-minimal-printf,true
+
+appPlugin:end-device-bind-library,false
+appPlugin:end-device-support,false
+appPlugin:esi-management,false
+appPlugin:events-client,false
+appPlugin:events-server,false
+appPlugin:ezmode-commissioning,false
+appPlugin:fem-control,false
+appPlugin:find-and-bind-initiator,true
+
+appPlugin:find-and-bind-target,false
+appPlugin:form-and-join,false
+appPlugin:fragmentation,false
+appPlugin:freertos,false
+appPlugin:gas-proxy-function,false
+appPlugin:gbcs-compatibility,false
+appPlugin:gbcs-device-log,false
+appPlugin:gbcs-gas-meter,false
+appPlugin:gbz-message-controller,false
+appPlugin:general-response-commands,false
+appPlugin:generic-interrupt-control,false
+appPlugin:generic-interrupt-control-stub,false
+appPlugin:glib,false
+appPlugin:gp-library,false
+appPlugin:gpio-sensor,false
+appPlugin:gpio-sensor-stub,false
+appPlugin:green-power-client,false
+appPlugin:green-power-common,false
+appPlugin:green-power-server,false
+appPlugin:green-power-translation-table,false
+appPlugin:groups-client,false
+appPlugin:groups-server,false
+appPlugin:hal-library,true
+
+appPlugin:hc-11073-tunnel,false
+appPlugin:heartbeat,false
+appPlugin:humidity-si7021,false
+appPlugin:humidity-si7021-stub,false
+appPlugin:i2c-driver,false
+appPlugin:i2c-driver-stub,false
+appPlugin:ias-zone-client,false
+appPlugin:ias-zone-server,false
+appPlugin:identify,false
+appPlugin:identify-feedback,false
+appPlugin:idle-sleep,false
+appPlugin:illuminance-measurement-server,false
+appPlugin:illuminance-si1141,false
+appPlugin:illuminance-si1141-stub,false
+appPlugin:install-code-library,true
+
+appPlugin:interpan,false
+appPlugin:key-establishment,false
+appPlugin:led-blink,false
+appPlugin:led-blink-stub,false
+appPlugin:led-dim-pwm,false
+appPlugin:led-rgb-pwm,false
+appPlugin:led-temp-pwm,false
+appPlugin:level-control,false
+appPlugin:libcoap,false
+appPlugin:linked-list,false
+appPlugin:mac-address-filtering,false
+appPlugin:manufacturing-library,false
+appPlugin:manufacturing-library-cli,false
+appPlugin:manufacturing-library-ota,false
+appPlugin:mbedtls,true
+
+appPlugin:mbedtls-multiprotocol,false
+appPlugin:messaging-client,false
+appPlugin:messaging-server,false
+appPlugin:meter-mirror,false
+appPlugin:meter-snapshot-client,false
+appPlugin:meter-snapshot-server,false
+appPlugin:meter-snapshot-storage,false
+appPlugin:metering-server,false
+appPlugin:micrium-rtos,false
+appPlugin:mn-price-passthrough,false
+appPlugin:mpsi,false
+appPlugin:mpsi-ipc,false
+appPlugin:mpsi-storage,false
+appPlugin:multi-network-library,false
+appPlugin:multi-pan-library,false
+appPlugin:multirail-demo,false
+appPlugin:network-creator,true
+
+appPlugin:network-creator-security,true
+
+appPlugin:network-find,false
+appPlugin:network-find-sub-ghz,false
+appPlugin:network-steering,true
+
+appPlugin:nvm3,false
+appPlugin:occupancy-pyd1698,false
+appPlugin:occupancy-pyd1698-cli,false
+appPlugin:occupancy-pyd1698-stub,false
+appPlugin:occupancy-sensor-server,false
+appPlugin:on-off,false
+appPlugin:ota-bootload,true
+
+appPlugin:ota-client,true
+
+appPlugin:ota-client-policy,true
+
+appPlugin:ota-common,true
+
+appPlugin:ota-server,false
+appPlugin:ota-server-policy,false
+appPlugin:ota-storage-common,true
+
+appPlugin:ota-storage-posix-filesystem,false
+appPlugin:ota-storage-simple,true
+
+appPlugin:ota-storage-simple-eeprom,true
+
+appPlugin:ota-storage-simple-ram,false
+appPlugin:packet-handoff,false
+appPlugin:packet-validate-library,true
+
+appPlugin:paho.mqtt.c,false
+appPlugin:partner-link-key-exchange,false
+appPlugin:permit-join-manager,false
+appPlugin:poll-control-client,false
+appPlugin:poll-control-server,false
+appPlugin:power-configuration-server,false
+appPlugin:power-consumption-model,false
+appPlugin:power-meter-cs5463,false
+appPlugin:power-meter-cs5463-stub,false
+appPlugin:prepayment-client,false
+appPlugin:prepayment-server,false
+appPlugin:prepayment-snapshot-storage,false
+appPlugin:price-client,false
+appPlugin:price-common,false
+appPlugin:price-server,false
+appPlugin:psstore,false
+appPlugin:rail-library,true
+
+appPlugin:rail-library-mp,false
+appPlugin:relative-humidity-measurement-server,false
+appPlugin:reporting,false
+appPlugin:rtos-common,false
+appPlugin:sb1-gesture-sensor,false
+appPlugin:sb1-gesture-sensor-stub,false
+appPlugin:scan-dispatch,true
+
+appPlugin:scenes,false
+appPlugin:scenes-client,false
+appPlugin:security-link-keys-library,false
+appPlugin:security-sensor,false
+appPlugin:segger-rtt,false
+appPlugin:serial,true
+
+appPlugin:silabs-device-ui,false
+appPlugin:sim-eeprom1,false
+appPlugin:sim-eeprom2,true
+
+appPlugin:sim-eeprom2-1to2-upgrade,false
+appPlugin:sim-eeprom2-1to2-upgrade-stub,true
+
+appPlugin:sim-eeprom2-to-nvm3-upgrade,false
+appPlugin:sim-eeprom2-to-nvm3-upgrade-stub,false
+appPlugin:simple-clock,false
+appPlugin:simple-main,true
+
+appPlugin:simple-metering-client,false
+appPlugin:simple-metering-server,false
+appPlugin:sleepy-message-queue,false
+appPlugin:slot-manager,false
+appPlugin:smart-energy-registration,false
+appPlugin:source-route-library,false
+appPlugin:stack-diagnostics,false
+appPlugin:stack-protection-iar,false
+appPlugin:standalone-bootloader-client,false
+appPlugin:standalone-bootloader-common,false
+appPlugin:standalone-bootloader-server,false
+appPlugin:standard-printf-support,false
+appPlugin:strong-random,true
+
+appPlugin:sub-ghz-client,false
+appPlugin:sub-ghz-server,false
+appPlugin:tamper-switch,false
+appPlugin:tamper-switch-stub,false
+appPlugin:temperature-measurement-server,false
+appPlugin:temperature-si7021,false
+appPlugin:temperature-si7053,false
+appPlugin:temperature-si7053-stub,false
+appPlugin:test-harness,false
+appPlugin:test-harness-z3,false
+appPlugin:throughput,false
+appPlugin:time-server,false
+appPlugin:transport-mqtt,false
+appPlugin:trust-center-backup,false
+appPlugin:trust-center-keepalive,false
+appPlugin:trust-center-nwk-key-update-broadcast,false
+appPlugin:trust-center-nwk-key-update-periodic,false
+appPlugin:trust-center-nwk-key-update-unicast,false
+appPlugin:tunneling-client,false
+appPlugin:tunneling-server,false
+appPlugin:update-ha-tc-link-key,false
+appPlugin:update-tc-link-key,true
+
+appPlugin:wstk-display,false
+appPlugin:xmodem-sender,false
+appPlugin:zcl-framework-core,true
+
+appPlugin:zigbee-event-logger-stub,false
+appPlugin:zigbee-pro-leaf-library,false
+appPlugin:zigbee-pro-library,true
+
+appPlugin:zigbee-pro-stack-alt-mac-library,false
+appPlugin:zigbee-r22-support-library,false
+appPlugin:zll-commissioning-client,false
+appPlugin:zll-commissioning-common,false
+appPlugin:zll-commissioning-network,false
+appPlugin:zll-commissioning-server,false
+appPlugin:zll-identify-server,false
+appPlugin:zll-level-control-server,false
+appPlugin:zll-library,false
+appPlugin:zll-on-off-server,false
+appPlugin:zll-scenes-client,false
+appPlugin:zll-scenes-server,false
+appPlugin:zll-utility-client,false
+appPlugin:zll-utility-server,false
+AppPluginOption:EMBER_BINDING_TABLE_SIZE,10
+AppPluginOption(efr32~family[M]~series[1]~device_configuration[1]~performance[P]~radio[132]~flash[256K]~temp[I]~package[M]~pins[32]~!module+none+gcc):EMBER_AF_PLUGIN_OTA_CLIENT_MIN_BLOCK_PERIOD_UNITS,Disable Feature
+AppPluginOption(efr32~family[M]~series[1]~device_configuration[1]~performance[P]~radio[132]~flash[256K]~temp[I]~package[M]~pins[32]~!module+none+gcc):EMBER_AF_PLUGIN_OTA_CLIENT_POLICY_IMAGE_TYPE_ID,0x1000
+AppPluginOption(efr32~family[M]~series[1]~device_configuration[1]~performance[P]~radio[132]~flash[256K]~temp[I]~package[M]~pins[32]~!module+none+gcc):EMBER_AF_PLUGIN_OTA_STORAGE_SIMPLE_EEPROM_READ_MODIFY_WRITE_SUPPORT,false
+AppPluginOption(efr32~family[M]~series[1]~device_configuration[1]~performance[P]~radio[132]~flash[256K]~temp[I]~package[M]~pins[32]~!module+none+gcc):EMBER_AF_PLUGIN_OTA_STORAGE_SIMPLE_EEPROM_STORAGE_END,233472
+AppPluginOption(efr32~family[M]~series[1]~device_configuration[1]~performance[P]~radio[132]~flash[256K]~temp[I]~package[M]~pins[32]~!module+none+gcc):EMBER_AF_PLUGIN_OTA_CLIENT_POLICY_EBL_VERIFICATION,false
+AppPluginOption(efr32~family[M]~series[1]~device_configuration[1]~performance[P]~radio[132]~flash[256K]~temp[I]~package[M]~pins[32]~!module+none+gcc):EMBER_AF_PLUGIN_OTA_CLIENT_POLICY_INCLUDE_HARDWARE_VERSION,true
+AppPluginOption(efr32~family[M]~series[1]~device_configuration[1]~performance[P]~radio[132]~flash[256K]~temp[I]~package[M]~pins[32]~!module+none+gcc):EMBER_AF_PLUGIN_SIM_EEPROM2_PASSWORD,!spoon
+AppPluginOption(efr32~family[M]~series[1]~device_configuration[1]~performance[P]~radio[132]~flash[256K]~temp[I]~package[M]~pins[32]~!module+gcc):EMBER_AF_PLUGIN_NETWORK_STEERING_TRY_ALL_KEYS,true
+AppPluginOption(efr32~family[M]~series[1]~device_configuration[1]~performance[P]~radio[132]~flash[256K]~temp[I]~package[M]~pins[32]~!module+gcc):EMBER_AF_PLUGIN_OTA_STORAGE_SIMPLE_EEPROM_GECKO_BOOTLOADER_STORAGE_SUPPORT,Do not use slots
+AppPluginOption(efr32~family[M]~series[1]~device_configuration[1]~performance[P]~radio[132]~flash[256K]~temp[I]~package[M]~pins[32]~!module+gcc):EMBER_AF_PLUGIN_OTA_CLIENT_POLICY_FIRMWARE_VERSION,0x01000008
