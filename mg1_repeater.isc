@@ -891,7 +891,7 @@ appPlugin:zll-utility-client,false
 appPlugin:zll-utility-server,false
 AppPluginOption:EMBER_BINDING_TABLE_SIZE,10
 AppPluginOption(efr32~family[M]~series[1]~device_configuration[1]~performance[P]~radio[132]~flash[256K]~temp[I]~package[M]~pins[32]~!module+none+gcc):EMBER_AF_PLUGIN_OTA_CLIENT_MIN_BLOCK_PERIOD_UNITS,Disable Feature
-AppPluginOption(efr32~family[M]~series[1]~device_configuration[1]~performance[P]~radio[132]~flash[256K]~temp[I]~package[M]~pins[32]~!module+none+gcc):EMBER_AF_PLUGIN_OTA_CLIENT_POLICY_IMAGE_TYPE_ID,0x1000
+AppPluginOption(efr32~family[M]~series[1]~device_configuration[1]~performance[P]~radio[132]~flash[256K]~temp[I]~package[M]~pins[32]~!module+none+gcc):EMBER_AF_PLUGIN_OTA_CLIENT_POLICY_IMAGE_TYPE_ID,0x1001
 AppPluginOption(efr32~family[M]~series[1]~device_configuration[1]~performance[P]~radio[132]~flash[256K]~temp[I]~package[M]~pins[32]~!module+none+gcc):EMBER_AF_PLUGIN_OTA_STORAGE_SIMPLE_EEPROM_READ_MODIFY_WRITE_SUPPORT,false
 AppPluginOption(efr32~family[M]~series[1]~device_configuration[1]~performance[P]~radio[132]~flash[256K]~temp[I]~package[M]~pins[32]~!module+none+gcc):EMBER_AF_PLUGIN_OTA_STORAGE_SIMPLE_EEPROM_STORAGE_END,233472
 AppPluginOption(efr32~family[M]~series[1]~device_configuration[1]~performance[P]~radio[132]~flash[256K]~temp[I]~package[M]~pins[32]~!module+none+gcc):EMBER_AF_PLUGIN_OTA_CLIENT_POLICY_EBL_VERIFICATION,false

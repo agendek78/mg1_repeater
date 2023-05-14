@@ -8,7 +8,7 @@ I need custom firmware to implement additional functionalities on this device. I
 
 ## What's in the firmware
 
-This firmware setups the IKEA repeater device as 'Home Automation Range Extender'. The manufacturer ID is set to Ember (0x1002), OTA image type is 0x1000. So it's normal Zigbee 3.0 router node with OnOff client cluster from which OFF command is sent after boot up.
+This firmware setups the IKEA repeater device as 'Home Automation Range Extender'. The manufacturer ID is set to Ember (0x1002), OTA image type is 0x1001. So it's normal Zigbee 3.0 router node with OnOff client cluster from which OFF command is sent after boot up.
 
 ### Button functionality
 - long press (3s) - factory reset: leaves current zigbee network,clears OTA storage and binding table.
